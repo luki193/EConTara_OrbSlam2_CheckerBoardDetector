@@ -51,14 +51,23 @@ rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
 ### Instalacja ORB-SLAM2
   Instalacja ORB-SLAM2 może spowodować zawieszenie się komputera w przypadku niedostatecznej ilości pamięci RAM. W takim przypadku należy ponownie uruchomić komputer (format dowolny, preferowany hard reset) i ponowić ostatnią komendę.
   
+  
+  Przed zbudowaniem ORB-SLAM2 należy dodać ścieżkę dostępu do przykładów ORB-SLAM2 w pliku .bashrc.
+  
+  Otwarcie pliku .bashrc:
+```
+cd ..
+gedit .bashrc
+```
+  Na końcu pliku .bashrc należy dodać poniższą linijkę:
+```
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
+```
+
+  Po wykonaniu powyższych czynności można zbudować ORB-SLAM2:
 ```
 cd ORB_SLAM2
 chmod +x build.sh
 ./build.sh
-```
-
-```
-cd ..
-gedit .bashrc
 ```
 
