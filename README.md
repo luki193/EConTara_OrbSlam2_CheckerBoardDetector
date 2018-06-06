@@ -3,12 +3,9 @@
   
   
 ### Pakiety niezbędne do prawidłowego działania
-  ```
-  sudo apt-get install ros-kinetic-camera-info-manager
-  sudo apt-get install libudev-dev
-  sudo apt-get install libv4l-dev
-  sudo apt-get install ros-kinetic-rqt-image-view
-  ```
+  ROS:
+  http://wiki.ros.org/ROS/Installation
+
   
   Pangolin:
   https://github.com/stevenlovegrove/Pangolin
@@ -16,7 +13,15 @@
   Eigen3:
   https://github.com/OPM/eigen3
   
-  
+
+  ```
+  sudo apt-get install ros-kinetic-camera-info-manager
+  sudo apt-get install libudev-dev
+  sudo apt-get install libv4l-dev
+  sudo apt-get install ros-kinetic-rqt-image-view
+  ```
+
+
 ### Adresy repozytoriów, na podstawie których pracowano
   Deimos:
   https://github.com/i3drobotics/deimos-ros
@@ -28,4 +33,32 @@
   https://github.com/raulmur/ORB_SLAM2
   
   
+### Przygotowanie Workspace dla ROS
+  ```
+  mkdir ~/ROS_WS
+  cd ~/ROS_WS
+  git clone https://github.com/luki193/EConTara_OrbSlam2_CheckerBoardDetector.git
+  catkin_make
+  source devel/setup.bash
+  ```
   
+  W przypadku pojawienia się błędów z paczkami należy zainstalować niezbędne powiązania między pakietami ROS:
+```
+rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
+```
+  
+  
+### Instalacja ORB-SLAM2
+  Instalacja ORB-SLAM2 może spowodować zawieszenie się komputera w przypadku niedostatecznej ilości pamięci RAM. W takim przypadku należy ponownie uruchomić komputer (format dowolny, preferowany hard reset) i ponowić ostatnią komendę.
+  
+```
+cd ORB_SLAM2
+chmod +x build.sh
+./build.sh
+```
+
+```
+cd ..
+gedit .bashrc
+```
+
