@@ -3,6 +3,22 @@ Deimos
 
 ROS driver for i3D Robotics' Deimos stereo camera, derived from the e-consystems See3CAM_Stereo (Tara) camera driver. This driver is in turn based on the [uvc_camera](https://github.com/ktossell/camera_umd/tree/master/uvc_camera) package. We have made significant improvements to the driver which make it a lot more usable in ROS.
 
+
+Modifications
+=============
+In the "deimos.launch" file folowing part of the code was changed:
+
+     <group ns="camera">
+            <node pkg="deimos" type="deimos_node" name="deimos" output="screen" required="true">
+                <param name="width" type="int" value="640" />
+                <param name="height" type="int" value="480" />
+                <param name="fps" type="int" value="20" />
+                <param name="device" type="string" value="/dev/video0" />
+                <param name="exposureValue" type="int" value="1" />
+                <param name="cameraLeft_info_url" type="string" value="file://${ROS_HOME}/camera_info/left.yaml" />
+                <param name="cameraRight_info_url" type="string" value="file://${ROS_HOME}/camera_info/right.yaml" />
+    </node>
+
 Quickstart
 ==========
 
@@ -17,23 +33,23 @@ Creates a stereo image node pair (`left/image_raw` and `right/image_raw`) from a
 
 The following nodes will be created upon launching this driver.
 ```
-    /stereo/concat
-    /stereo/image_raw
-    /stereo/left/image_raw
-    /stereo/left/camera_info
-    /stereo/right/image_raw
-    /stereo/right/camera_info
-    /stereo/get_brightness
-    /stereo/set_brightness
-    /stereo/get_exposure
-    /stereo/set_exposure
-    /stereo/imu_data
+    /camera/concat
+    /camera/image_raw
+    /camera/left/image_raw
+    /camera/left/camera_info
+    /camera/right/image_raw
+    /camera/right/camera_info
+    /camera/get_brightness
+    /camera/set_brightness
+    /camera/get_exposure
+    /camera/set_exposure
+    /camera/imu_data
 ```
 
 The Camera preview can be seen using any basic ROS camera application. `rqt_image_view` can be used for simplicity.
 To Install and use `rqt_image_view` 
 ```bash
-sudo apt-get install ros-jade-rqt-image-view
+sudo apt-get install ros-kinetic-rqt-image-view
 rqt_image_view
 ```
 
