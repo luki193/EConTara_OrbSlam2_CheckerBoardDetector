@@ -71,3 +71,6 @@ chmod +x build.sh
 ./build.sh
 ```
 
+### Uruchomienie e-con Tara
+
+w celu poprawnego dzialania pliki yaml nalezy skopiowac do folderu Home/.ros/camera_info
